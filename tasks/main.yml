@@ -1,9 +1,10 @@
 ---
 
-- name: Example task to deploy a template
-  ansible.builtin.template:
-    src: 'potos.example.j2'
-    dest: '/potos.example'
-    owner: root
-    group: root
-    mode: '0755'
+- name: Apt key
+  ansible.builtin.include_tasks: apt_key.yml
+
+- name: Apt repository
+  ansible.builtin.include_tasks: apt_repository.yml
+
+- name: Apt package
+  ansible.builtin.include_tasks: apt_package.yml

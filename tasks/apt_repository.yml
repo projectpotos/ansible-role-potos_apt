@@ -1,0 +1,21 @@
+---
+
+- name: Add apt repositories
+  ansible.builtin.apt_repository:
+    repo: "{{ item.value.repo }}"
+    state: present
+    filename: "{{ item.value.filename }}"
+  loop: "{{ q('dict', potos_apt_repository) }}"
+  when: potos_apt_repository is defined and
+        potos_apt_repository is iterable and
+        (potos_apt_repository | length > 0)
+
+- name: Remove apt repositories
+  ansible.builtin.apt_repository:
+    repo: "{{ item.value.repo }}"
+    state: absent
+    filename: "{{ item.value.filename }}"
+  loop: "{{ q('dict', potos_apt_repository_remove) }}"
+  when: potos_apt_repository_remove is defined and
+        potos_apt_repository_remove is iterable and
+        (potos_apt_repository_remove | length > 0)

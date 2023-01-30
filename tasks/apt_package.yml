@@ -1,0 +1,30 @@
+---
+
+- name: Install apt packages
+  ansible.builtin.apt:
+    name: "{{ potos_apt_packages }}"
+    state: latest
+    update_cache: true
+  loop: "{{ potos_apt_packages }}"
+  when: potos_apt_packages is defined and
+        potos_apt_packages is iterable and
+        (potos_apt_packages | length > 0)
+
+- name: Remove apt packages
+  ansible.builtin.apt:
+    name: "{{ potos_apt_packages_remove }}"
+    state: absent
+  loop: "{{ potos_apt_packages_remove }}"
+  when: potos_apt_packages_remove is defined and
+        potos_apt_packages_remove is iterable and
+        (potos_apt_packages_remove | length > 0)
+
+- name: Remove apt packages, at setup
+  ansible.builtin.apt:
+    name: "{{ potos_apt_packages_remove_setup }}"
+    state: absent
+  loop: "{{ potos_apt_packages_remove_setup }}"
+  when: potos_apt_packages_remove_setup is defined and
+        potos_apt_packages_remove_setup is iterable and
+        (potos_apt_packages_remove_setup | length > 0) and
+        potos_runtype == setup

@@ -1,7 +1,49 @@
 ---
 
-# Example variable
-potos_template_example_var: 'hello world!'
+### Example to add apt keys
+#potos_apt_key:
+#  microsoft-packages:
+#    url: https://packages.microsoft.com/keys/microsoft.asc
+#    filename: microsoft-packages
+#  chrome-signing-key:
+#    url: https://dl.google.com/linux/linux_signing_key.pub
+#    filename: chrome-signing-key
 
-# List of items used for action xyz
-potos_template_example_list: []
+### Example to remove apt keys, by Key ID's
+#potos_apt_key_remove:
+#  - EB3E94ADBE1229CF
+#  - A040830F7FAC5991
+#  - 7721F63BD38B4796
+
+### Example to add apt repoistories
+#potos_apt_repository:
+#  edge:
+#    filename: microsoft-edge
+#    repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
+#  chrome:
+#    filename: google-chrome
+#    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+
+### Example to remove apt repositories
+#potos_apt_repository_remove:
+#  edge:
+#    filename: microsoft-edge
+#    repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
+#  chrome:
+#    filename: google-chrome
+#    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+
+### Example to install apt packages
+#potos_apt_packages:
+#  - microsoft-edge-stable
+#  - google-chrome-stable
+
+### Example to deinstall apt packages
+#potos_apt_packages_remove:
+#  - microsoft-edge-stable
+#  - google-chrome-stable
+
+### Example to deinstall apt packages, at potos_runtype setup only
+#potos_apt_packages_remove_setup:
+#  - microsoft-edge-stable
+#  - google-chrome-stable

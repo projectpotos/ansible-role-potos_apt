@@ -1,0 +1,20 @@
+---
+
+- name: Add apt signing keys
+  ansible.builtin.apt_key:
+    url: "{{ item.value.url }}"
+    keyring: "/etc/apt/trusted.gpg.d/{{ item.value.filename }}.gpg"
+    state: present
+  loop: "{{ q('dict', potos_apt_key) }}"
+  when: potos_apt_key is defined and
+        potos_apt_key is iterable and
+        (potos_apt_key | length > 0)
+
+- name: Remove apt signing keys
+  ansible.builtin.apt_key:
+    id: "{{ item }}"
+    state: absent
+  loop: "{{ potos_apt_key_remove }}"
+  when: potos_apt_key_remove is defined and
+        potos_apt_key_remove is iterable and
+        (potos_apt_key_remove | length > 0)
