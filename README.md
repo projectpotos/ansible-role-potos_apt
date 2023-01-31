@@ -1,5 +1,5 @@
 
-# Ansible Role - potos\_template
+# Ansible Role - potos\_apt_package
 
 Role to use as template for new roles of Potos Linux Clients.
 
