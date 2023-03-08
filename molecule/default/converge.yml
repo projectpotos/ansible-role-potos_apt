@@ -6,4 +6,15 @@
   tasks:
     - name: run role
       ansible.builtin.include_role:
-        name: 'ansible-role-potos_template'
+        name: 'ansible-role-potos_apt_sources'
+  vars:
+    potos_apt_key:
+      microsoft-packages:
+        url: https://packages.microsoft.com/keys/microsoft.asc
+        filename: microsoft-packages
+    potos_apt_repository:
+      edge:
+        filename: microsoft-edge
+        repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
+    potos_apt_packages:
+      - microsoft-edge-stable
