@@ -3,10 +3,7 @@
 - name: Converge
   hosts: all
   gather_facts: yes
-  tasks:
-    - name: run role
-      ansible.builtin.include_role:
-        name: 'ansible-role-potos_apt_sources'
+
   vars:
     potos_apt_key:
       microsoft-packages:
@@ -18,3 +15,8 @@
         repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
     potos_apt_packages:
       - microsoft-edge-stable
+
+  tasks:
+    - name: run role
+      ansible.builtin.include_role:
+        name: "ansible-role-potos_apt"

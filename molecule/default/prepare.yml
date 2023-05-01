@@ -3,3 +3,17 @@
 - name: Prepare
   hosts: all
   gather_facts: yes
+
+  tasks:
+    - name: install required gnupg, for apt gpg keys
+      ansible.builtin.apt:
+        name: gnupg
+        state: present
+    - name: install apt-transport-https
+      ansible.builtin.apt:
+        name: apt-transport-https
+        state: present
+    - name: install python3-certifi
+      ansible.builtin.apt:
+        name: python3-certifi
+        state: present

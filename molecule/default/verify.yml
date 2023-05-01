@@ -5,10 +5,10 @@
   gather_facts: no
 
   tasks:
-    - name: check if template has been applied
-      ansible.builtin.stat:
-        path: "/potos.example"
+    - name: check if msedge is installed via checking its version command
+      ansible.builtin.command: /opt/microsoft/msedge/msedge --version
       register: out
       changed_when: false
-      failed_when:
-        - not out.stat.exists
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: result
