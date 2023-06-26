@@ -72,7 +72,7 @@ potos_apt_packages_remove:
 
 ## Requirements
 
-[ansible-role-potos_basics](https://github.com/projectpotos/ansible-role-potos_basics)
+Potos [ansible-role-potos_basics](https://github.com/projectpotos/ansible-role-potos_basics)
 
 ## License
 
