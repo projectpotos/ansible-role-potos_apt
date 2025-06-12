@@ -1,13 +1,13 @@
 ---
 
 ### Example to add apt keys
-# potos_apt_key:
-#   microsoft-packages:
-#     url: https://packages.microsoft.com/keys/microsoft.asc
-#     filename: microsoft-packages
-#   chrome-signing-key:
-#     url: https://dl.google.com/linux/linux_signing_key.pub
-#     filename: chrome-signing-key
+potos_apt_key:
+  microsoft-packages:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    filename: microsoft-packages
+  chrome-signing-key:
+    url: https://dl.google.com/linux/linux_signing_key.pub
+    filename: chrome-signing-key
 
 ### Example to remove apt keys, by Key ID's
 # potos_apt_key_remove:
@@ -16,17 +16,27 @@
 #   - 7721F63BD38B4796
 
 ### Example to add apt repoistories
-# potos_apt_repository:
-#  edge:
-#    name: microsoft-edge
-#    types:
-#      - deb
-#    uris: https://packages.microsoft.com/repos/edge/
-#    suites: stable
-#    components:
-#      - main
-#    architectures:
-#      - amd64
+potos_apt_repository:
+  edge:
+    name: microsoft-edge
+    types:
+      - deb
+    uris: https://packages.microsoft.com/repos/edge/
+    suites: stable
+    components:
+      - main
+    architectures:
+      - amd64
+  chrome:
+    name: google-chrome
+    types:
+      - deb
+    uris: http://dl.google.com/linux/chrome/deb/
+    suites: stable
+    components:
+      - main
+    architectures:
+      - amd64
 
 ### Example to remove apt repositories
 # potos_apt_repository_remove:
@@ -36,9 +46,9 @@
 #     name: google-chrome
 
 ### Example to install apt packages
-# potos_apt_packages:
-#   - microsoft-edge-stable
-#   - google-chrome-stable
+potos_apt_packages:
+  - microsoft-edge-stable
+  - google-chrome-stable
 
 ### Example to deinstall apt packages
 # potos_apt_packages_remove:
