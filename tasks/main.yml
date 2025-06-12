@@ -11,11 +11,11 @@
 
 - name: Apt repository 22.04
   ansible.builtin.include_tasks: apt_repository_22.yml
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == 22.04
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
 
 - name: Apt repository 24.04
   ansible.builtin.include_tasks: apt_repository_24.yml
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == 24.04
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '24.04'
 
 - name: Apt package
   ansible.builtin.include_tasks: apt_package.yml
