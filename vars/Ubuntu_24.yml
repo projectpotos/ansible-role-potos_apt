@@ -22,7 +22,8 @@ potos_apt_repository:
     types:
       - deb
     uris: https://packages.microsoft.com/repos/edge/
-    suites: stable
+    suites:
+      - stable
     components:
       - main
     architectures:
@@ -32,7 +33,8 @@ potos_apt_repository:
     types:
       - deb
     uris: http://dl.google.com/linux/chrome/deb/
-    suites: stable
+    suites:
+      - stable
     components:
       - main
     architectures:
