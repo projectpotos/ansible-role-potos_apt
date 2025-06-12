@@ -1,10 +1,21 @@
 ---
 
+- name: Include OS-specific vars
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_facts.distribution }}_{{ ansible_facts.distribution_major_version }}.yml"
+    - "{{ ansible_facts.os_family }}.yml"
+
 - name: Apt key
   ansible.builtin.include_tasks: apt_key.yml
 
-- name: Apt repository
-  ansible.builtin.include_tasks: apt_repository.yml
+- name: Apt repository 22.04
+  ansible.builtin.include_tasks: apt_repository_22.yml
+  when: ansible_distribution_version == 22.04
+
+- name: Apt repository 24.04
+  ansible.builtin.include_tasks: apt_repository_24.yml
+  when: ansible_distribution_version == 24.04
 
 - name: Apt package
   ansible.builtin.include_tasks: apt_package.yml

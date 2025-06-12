@@ -1,0 +1,25 @@
+---
+
+- name: Add apt repositories
+  ansible.builtin.deb822_repository:
+    name: "{{ item.value.name }}" 
+    types: "{{ item.value.types | join(' ') }}"
+    uris: "{{ item.value.uris }}"
+    suites: "{{ item.value.suites | join(' ') }}"
+    components: "{{ item.value.components | join(' ') }}"
+    architectures: "{{ item.value.architectures | join(' ') if item.value.architectures is defined else omit }}"
+    signed_by: "{{ item.value.signed_by | default(omit) }}"
+    state: present
+  loop: "{{ potos_apt_repository | dict2items }}"
+  when: potos_apt_repository is defined and
+        potos_apt_repository is iterable and
+        (potos_apt_repository | length > 0)
+
+- name: Remove apt repositories
+  ansible.builtin.deb822_repository:
+    name: "{{ item.value.name }}"
+    state: absent
+    loop: "{{ potos_apt_repository_remove | dict2items }}"
+  when: potos_apt_repository_remove is defined and
+        potos_apt_repository_remove is iterable and
+        (potos_apt_repository_remove | length > 0)
