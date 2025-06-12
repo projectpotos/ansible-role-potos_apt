@@ -28,6 +28,7 @@ potos_apt_repository:
       - main
     architectures:
       - amd64
+    signed-by: /etc/apt/trusted.gpg.d/microsoft-packages.gpg
   chrome:
     name: google-chrome
     types:
@@ -39,6 +40,7 @@ potos_apt_repository:
       - main
     architectures:
       - amd64
+    signed-by: /etc/apt/trusted.gpg.d/chrome-signing-key.gpg
 
 ### Example to remove apt repositories
 # potos_apt_repository_remove:

@@ -8,7 +8,7 @@
     suites: "{{ item.value.suites | join(' ') }}"
     components: "{{ item.value.components | join(' ') }}"
     architectures: "{{ item.value.architectures | join(' ') if item.value.architectures is defined else omit }}"
-    signed_by: "{{ '/etc/apt/trusted.gpg.d/' ~ potos_apt_key[item.value.key_ref].filename ~ '.gpg' if item.value.key_ref is defined and potos_apt_key[item.value.key_ref] is defined else omit }}"
+    signed_by: "{{ item.value['signed-by'] | default(omit) }}"
     state: present
   loop: "{{ potos_apt_repository | dict2items }}"
   when: potos_apt_repository is defined and
